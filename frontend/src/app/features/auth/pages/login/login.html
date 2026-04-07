@@ -1,0 +1,20 @@
+<div class="login-page">
+<div class="login-card">
+<h1>Bosch Pizza</h1>
+<p>Acesse o sistema</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+<div class="field">
+<label>Usuário</label>
+<input type="text" formControlName="username" placeholder="Digite seu usuário" />
+</div>
+<div class="field">
+<label>Senha</label>
+<input type="password" formControlName="password" placeholder="Digite sua senha" />
+</div>
+<button type="submit" [disabled]="loading">
+        {{ loading ? 'Entrando...' : 'Entrar' }}
+</button>
+<p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+</form>
+</div>
+</div>

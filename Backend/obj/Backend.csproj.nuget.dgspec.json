@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\Backend\\Backend.csproj": {}
+    "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\Backend\\Backend.csproj": {
+    "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\Backend\\Backend.csproj",
+        "projectPath": "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\geb1jvl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\Backend\\obj\\",
+        "outputPath": "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\geb1jvl\\AppData\\Roaming\\NuGet\\NuGet.Config"
