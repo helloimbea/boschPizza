@@ -1,0 +1,68 @@
+/* Página */
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Card */
+.error-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.4s ease;
+}
+
+/* 404 gigante */
+.error-card h1 {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  color: #6366f1;
+}
+
+/* Título */
+.error-card h2 {
+  margin-bottom: 0.8rem;
+  color: #111827;
+}
+
+/* Texto */
+.error-card p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+/* Botão */
+.btn-primary {
+  display: inline-block;
+  background: #6366f1;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

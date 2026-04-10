@@ -1,19 +1,33 @@
 <div class="layout">
-<header class="topbar">
-<div class="brand">Bosch Pizza</div>
-<button class="menu-btn"
-        (click)="toggleMenu(); $event.stopPropagation()">
-  ☰
-</button>
-<nav #menu [class.open]="menuOpen">
-<a routerLink="/home" routerLinkActive="active">Home</a>
-<a routerLink="/pizzas" routerLinkActive="active">Pizzas</a>
-<a routerLink="/cliente" routerLinkActive="active">Clientes</a>
 
-<button type="button" (click)="logout()">Sair</button>
-</nav>
-</header>
-<main class="content">
-<router-outlet></router-outlet>
-</main>
+  <header class="topbar">
+
+    <a class="brand" routerLink="/home">
+      🍕 Bosch Pizza
+    </a>
+
+    <button 
+      class="menu-btn"
+      (click)="toggleMenu(); $event.stopPropagation()">
+      ☰
+    </button>
+
+    <nav #menu class="nav" [class.open]="menuOpen">
+
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+      <a routerLink="/pizzas" routerLinkActive="active">Pizzas</a>
+      <a routerLink="/cliente" routerLinkActive="active">Clientes</a>
+
+      <button class="btn-logout" type="button" (click)="logout()">
+        Sair
+      </button>
+
+    </nav>
+
+  </header>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+
 </div>
