@@ -1,1 +1,57 @@
-<p>pizza-list works!</p>
+<section class="page">
+
+  <div class="page-header">
+    <h2>Pizzas</h2>
+    <button class="btn-primary" (click)="newPizza()">
+      + Nova pizza
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Carregando pizzas...</p>
+  </div>
+
+  <div class="table-wrapper" *ngIf="!loading && pizzas.length > 0">
+    <table>
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Sem glúten</th>
+          <th class="center">Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let pizza of pizzas">
+          <td>{{ pizza.id }}</td>
+          <td>{{ pizza.name }}</td>
+          <td>
+            <span 
+              class="badge" 
+              [class.success]="pizza.isGlutenFree" 
+              [class.danger]="!pizza.isGlutenFree">
+              {{ pizza.isGlutenFree ? 'Sem glúten' : 'Contém glúten' }}
+            </span>
+          </td>
+          <td class="actions">
+            <button class="btn-edit" (click)="editPizza(pizza.id!)">
+              Editar
+            </button>
+            <button class="btn-delete" (click)="deletePizza(pizza.id!)">
+              Excluir
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+  <div *ngIf="!loading && pizzas.length === 0" class="empty">
+    <p>Nenhuma pizza cadastrada 🍕</p>
+  </div>
+
+</section>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sPfyIt3VFhA=",
+  "dgSpecHash": "UC492HqRDA8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\backend\\Backend.csproj",
+  "projectFilePath": "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\Backend\\Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\geb1jvl\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\geb1jvl\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.8\\microsoft.aspnetcore.authentication.jwtbearer.8.0.8.nupkg.sha512",

@@ -1,0 +1,68 @@
+.layout {
+  min-height: 100vh;
+  background: #f7f9fc;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  background: #1f2937;
+  color:#fff;
+  position: sticky;
+  top: 0;
+}
+.brand {
+  font-weight: 700;
+}
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+nav a,
+nav button {
+  color:#fff;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+.menu-btn {
+  display: none;
+  border: none;
+  background: transparent;
+  color:#fff;
+  font-size: 24px;
+}
+.content {
+  padding: 20px;
+}
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+  nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    right:16px;
+    flex-direction: column;
+    align-items: stretch;
+    background: #111827;
+    padding: 12px;
+    border-radius: 12px;
+    min-width: 180px;
+  }
+  nav.open {
+    display: flex;
+  }
+}
+
+.content {
+  padding: 0; /* remove espaço interno */
+  margin: 0;
+  background: transparent; /* ou remove qualquer branco */
+}

@@ -1,1 +1,41 @@
-<p>pizza-form works!</p>
+<section class="page">
+
+  <div class="form-card">
+    
+    <h2>{{ id ? 'Editar pizza' : 'Nova pizza' }}</h2>
+
+    <form [formGroup]="form" (ngSubmit)="save()">
+
+      <div class="field">
+        <label for="name">Nome</label>
+        <input 
+          id="name"
+          type="text" 
+          formControlName="name" 
+          placeholder="Digite o nome da pizza"
+        />
+      </div>
+
+      <div class="checkbox-field">
+        <label class="checkbox-container">
+          <input type="checkbox" formControlName="isGlutenFree" />
+          <span class="checkmark"></span>
+          Sem glúten
+        </label>
+      </div>
+
+      <div class="actions">
+        <button class="btn-primary" type="submit">
+          {{ id ? 'Atualizar' : 'Salvar' }}
+        </button>
+
+        <a class="btn-secondary" routerLink="/pizzas">
+          Cancelar
+        </a>
+      </div>
+
+    </form>
+
+  </div>
+
+</section>

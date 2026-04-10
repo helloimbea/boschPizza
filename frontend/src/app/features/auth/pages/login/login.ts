@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Auth } from '../../../../core/services/auth';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class Login {
   private fb = inject(FormBuilder);
   private authService = inject(Auth);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
 
   loading = false;
   errorMessage = '';
@@ -30,6 +31,7 @@ export class Login {
 
     this.loading = true;
     this.errorMessage = '';
+    this.cdr.markForCheck();
 
     this.authService.login(this.form.getRawValue() as { username: string, password: string}).subscribe({
       next: (response) => {
@@ -39,9 +41,13 @@ export class Login {
       error: () =>{
         this.errorMessage = 'Usuário ou senha inválidos';
         this.loading = false;
+        this.cdr.markForCheck();
+
       },
       complete: () => {
         this.loading = false;
+        this.cdr.markForCheck();
+
       }
     })
   }

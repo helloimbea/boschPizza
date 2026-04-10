@@ -4,8 +4,11 @@ import { Login } from './features/auth/pages/login/login';
 import { MainLayout } from './layout/components/main-layout/main-layout';
 import { authGuard } from './core/guards/auth-guard';
 import { Home } from './features/dashboard/pages/home/home';
-import { Pizza } from './core/services/pizza';
+import { PizzaService } from './core/services/pizza.service';
 import { PizzaForm } from './features/pizzas/pages/pizza-form/pizza-form';
+import { PizzaList } from './features/pizzas/pages/pizza-list/pizza-list';
+import { Clientes } from './features/clientes/clientes';
+import { ClienteForm } from './features/clientes/cliente-form/cliente-form';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,10 +20,14 @@ export const routes: Routes = [
         canActivate: [authGuard],
         children: [
             { path: 'home', component: Home },
-            { path: 'pizza', component: Pizza },
-            { path: 'pizza/novo', component: PizzaForm },
-            { path: 'pizza/editar/:id', component: PizzaForm }
+            { path: 'pizzas', component: PizzaList },
+            { path: 'pizzas/novo', component: PizzaForm },
+            { path: 'pizzas/editar/:id', component: PizzaForm },
+            { path: 'cliente', component: Clientes },
+            { path: 'cliente/novo', component: ClienteForm },
+            { path: 'cliente/editar/:id', component: ClienteForm }
         ]
     },
-    { path: '**', redirectTo: 'login' }
+    
+    { path: '**', redirectTo: 'acesso-negado' }
 ];

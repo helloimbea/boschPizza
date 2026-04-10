@@ -6,6 +6,8 @@ public class Pizza
     public string Name { get; set; } = string.Empty;
     public bool IsGlutenFree { get; set; }
 
-    
+    //novo campo (coluna)
+    public decimal Price { get; set; }
+
 
 }

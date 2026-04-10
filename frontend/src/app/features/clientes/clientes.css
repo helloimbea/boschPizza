@@ -26,11 +26,13 @@
   padding: 0.6rem 1.2rem;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: 500;
   transition: 0.2s;
 }
 
 .btn-primary:hover {
   background: #4f46e5;
+  transform: translateY(-1px);
 }
 
 /* Tabela */
@@ -62,8 +64,10 @@ th {
 td {
   padding: 0.9rem 1rem;
   border-top: 1px solid #f1f1f1;
+  color: #111827;
 }
 
+/* Hover na linha */
 tbody tr:hover {
   background: #f9fafb;
 }
@@ -74,7 +78,7 @@ tbody tr:hover {
   gap: 0.5rem;
 }
 
-/* Botões */
+/* Botão editar */
 .btn-edit {
   background: #10b981;
   color: white;
@@ -82,12 +86,14 @@ tbody tr:hover {
   padding: 0.4rem 0.8rem;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .btn-edit:hover {
   background: #059669;
 }
 
+/* Botão excluir */
 .btn-delete {
   background: #ef4444;
   color: white;
@@ -95,28 +101,11 @@ tbody tr:hover {
   padding: 0.4rem 0.8rem;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .btn-delete:hover {
   background: #dc2626;
-}
-
-/* Badge */
-.badge {
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.badge.success {
-  background: #d1fae5;
-  color: #065f46;
-}
-
-.badge.danger {
-  background: #fee2e2;
-  color: #7f1d1d;
 }
 
 /* Centralizar */
@@ -133,6 +122,7 @@ tbody tr:hover {
   color: #6b7280;
 }
 
+/* Spinner */
 .spinner {
   width: 35px;
   height: 35px;
@@ -149,7 +139,7 @@ tbody tr:hover {
   }
 }
 
-/* Empty */
+/* Empty state */
 .empty {
   text-align: center;
   margin-top: 2rem;

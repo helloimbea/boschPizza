@@ -23,6 +23,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Isso ajuda para que a API reconheça a classe controllers como ponto de entrada
 builder.Services.AddControllers();
  
+
+//cors
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy("Frontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
  
 // Adiciona suporte à exploração dos endpoints da API
@@ -114,6 +126,9 @@ app.UseHttpsRedirection();
  
 // Ativa a autenticação
 app.UseAuthorization();
+
+//ativar o cors
+app.UseCors("Frontend");
  
 // Mapeia os controllers
 app.MapControllers();

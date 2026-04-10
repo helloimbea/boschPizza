@@ -56,66 +56,6 @@
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-/* Checkbox container */
-.checkbox-field {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-/* Checkbox custom */
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 0.95rem;
-  color: #374151;
-  gap: 0.5rem;
-}
-
-/* Esconde checkbox padrão */
-.checkbox-container input {
-  display: none;
-}
-
-/* Caixa custom */
-.checkmark {
-  width: 18px;
-  height: 18px;
-  border-radius: 6px;
-  border: 2px solid #6366f1;
-  display: inline-block;
-  position: relative;
-  transition: 0.2s;
-}
-
-/* Marcado */
-.checkbox-container input:checked + .checkmark {
-  background: #6366f1;
-}
-
-/* Check interno */
-.checkmark::after {
-  content: '';
-  position: absolute;
-  display: none;
-}
-
-/* Mostrar check */
-.checkbox-container input:checked + .checkmark::after {
-  display: block;
-}
-
-/* Desenho do check */
-.checkbox-container .checkmark::after {
-  left: 5px;
-  top: 1px;
-  width: 4px;
-  height: 9px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
 /* Ações */
 .actions {
   display: flex;
@@ -132,6 +72,7 @@
   padding: 0.6rem 1.3rem;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: 500;
   transition: 0.2s;
 }
 

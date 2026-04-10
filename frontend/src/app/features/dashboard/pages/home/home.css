@@ -1,0 +1,78 @@
+/* Página */
+.page {
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Header */
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h2 {
+  font-size: 1.8rem;
+}
+
+/* Boas-vindas */
+.welcome {
+  margin-bottom: 2rem;
+}
+
+.welcome h3 {
+  font-size: 1.4rem;
+}
+
+.welcome p {
+  color: #9ca3af;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card */
+.card {
+  background: #1f2937;
+  padding: 1.5rem;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+/* Ícone */
+.icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Título */
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* Texto */
+.card p {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* Hover */
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: #6366f1;
+  background: #111827;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .page {
+    padding: 1.5rem;
+  }
+}

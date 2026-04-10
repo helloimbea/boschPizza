@@ -1,0 +1,50 @@
+<section class="page">
+
+  <div class="page-header">
+    <h2>Clientes</h2>
+    <button class="btn-primary" (click)="newCliente()">
+      + Novo Cliente
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Carregando clientes...</p>
+  </div>
+
+  <div class="table-wrapper" *ngIf="!loading && clientes.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Endereço</th>
+          <th>Telefone</th>
+          <th class="center">Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{ cliente.id }}</td>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.endereco }}</td>
+          <td>{{ cliente.telefone }}</td>
+          <td class="actions">
+            <button class="btn-edit" (click)="editCliente(cliente.id!)">
+              Editar
+            </button>
+            <button class="btn-delete" (click)="deleteCliente(cliente.id!)">
+              Excluir
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="!loading && clientes.length === 0" class="empty">
+    <p>Nenhum cliente encontrado 😕</p>
+  </div>
+
+</section>
