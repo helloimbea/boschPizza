@@ -1,0 +1,45 @@
+<div class="login-page">
+  <div class="login-card">
+
+    <div class="voltar">
+      <a class="botao-voltar" routerLink="/login">< Voltar</a>
+    </div>
+
+    <h1>Bosch Pizza</h1>
+    <p>Crie sua conta</p>
+
+    <form (ngSubmit)="register()">
+      <div class="field">
+        <label>Usuário</label>
+        <input
+          type="text"
+          [(ngModel)]="user.username"
+          name="username"
+          placeholder="Digite seu usuário"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label>Senha</label>
+        <input
+          type="password"
+          [(ngModel)]="user.password"
+          name="password"
+          placeholder="Digite sua senha"
+          required
+        />
+      </div>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+
+    <p class="error" *ngIf="message">{{ message }}</p>
+
+    <div class="register-link">
+      <p>Já tem conta?</p>
+      <button routerLink="/login">Entrar</button>
+    </div>
+
+  </div>
+</div>

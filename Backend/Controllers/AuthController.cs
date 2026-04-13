@@ -1,3 +1,4 @@
+using BoschPizza.Data;
 using BoschPizza.Models;
 using BoschPizza.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -14,24 +15,45 @@ public class AuthController : ControllerBase
     private readonly TokenService _tokenService;
 
     // metodo construtor
-    public AuthController(IConfiguration configuration, TokenService tokenService)
-    {
-        //_ é como um this, para o nome não ficar igual
-        _configuration = configuration;
-        _tokenService = tokenService;
-    }
+private readonly AppDbContext _context;
 
-    [HttpPost("login")]
-    public IActionResult Login(UserLogin login)
-    {
-        if (login.Username != "admin" || login.Password != "1234") return Unauthorized(new { message = "usuário ou senha inválidos" });
+public AuthController(IConfiguration configuration, TokenService tokenService, AppDbContext context)
+{
+    _configuration = configuration;
+    _tokenService = tokenService;
+    _context = context;
+}
 
-        var key = _configuration["Jwt:Key"]!;
-        var issuer = _configuration["Jwt:Issuer"]!;
-        var audience = _configuration["Jwt:Audience"]!;
+[HttpPost("login")]
+public IActionResult Login(UserLogin login)
+{
+    var user = _context.UserLogins
+        .FirstOrDefault(u => u.Username == login.Username && u.Password == login.Password);
 
-        var token = _tokenService.GenerateToken(login.Username, key, issuer, audience);
+    if (user == null)
+        return Unauthorized(new { message = "usuário ou senha inválidos" });
 
-        return Ok(new { token });
-    }
+    var key = _configuration["Jwt:Key"]!;
+    var issuer = _configuration["Jwt:Issuer"]!;
+    var audience = _configuration["Jwt:Audience"]!;
+
+    var token = _tokenService.GenerateToken(user.Username, key, issuer, audience);
+
+    return Ok(new { token });
+}
+
+[HttpPost("register")]
+public IActionResult Register(UserLogin user)
+{
+    var userExists = _context.UserLogins.Any(u => u.Username == user.Username);
+
+    if (userExists)
+        return BadRequest(new { message = "Usuário já existe" });
+
+    // salva direto (sem hash)
+    _context.UserLogins.Add(user);
+    _context.SaveChanges();
+
+    return Ok(new { message = "Usuário cadastrado com sucesso" });
+}
 }

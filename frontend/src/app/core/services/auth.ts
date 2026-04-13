@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginResponse } from '../models/login-response';
 import { LoginRequest } from '../models/login';
 import { Observable } from 'rxjs';
+import { RegisterRequest } from '../models/register';
 
 @Injectable({
   providedIn: 'root',
@@ -33,4 +34,8 @@ export class Auth {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
+
+  register(data: RegisterRequest): Observable<any> {
+  return this.http.post(`${this.apiUrl}/register`, data);
+}
 }

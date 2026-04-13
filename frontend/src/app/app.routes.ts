@@ -9,10 +9,12 @@ import { PizzaForm } from './features/pizzas/pages/pizza-form/pizza-form';
 import { PizzaList } from './features/pizzas/pages/pizza-list/pizza-list';
 import { Clientes } from './features/clientes/clientes';
 import { ClienteForm } from './features/clientes/cliente-form/cliente-form';
+import { Register } from './features/auth/pages/register/register';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: Login },
+    { path: 'register', component: Register },
     { path: 'acesso-negado', component: AccessDenied } ,
     {
         path: '',
