@@ -9,7 +9,9 @@ import { Auth } from '../../../core/services/auth';
   styleUrl: './main-layout.css',
 })
 export class MainLayout {
-  private authService = inject(Auth); 
+
+  authService = inject(Auth); 
+
   menuOpen = false;
   @ViewChild('menu') menu!: ElementRef;
   constructor(private eRef: ElementRef) {}

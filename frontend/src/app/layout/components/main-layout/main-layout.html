@@ -17,7 +17,10 @@
       <a routerLink="/home" routerLinkActive="active">Home</a>
       <a routerLink="/pizzas" routerLinkActive="active">Pizzas</a>
       <a routerLink="/cliente" routerLinkActive="active">Clientes</a>
-
+ <a *ngIf="authService.isAdmin()" routerLink="/users" routerLinkActive="active">
+  Usuários
+</a>
+   
       <button class="btn-logout" type="button" (click)="logout()">
         Sair
       </button>

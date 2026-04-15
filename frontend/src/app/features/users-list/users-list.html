@@ -1,0 +1,56 @@
+<section class="page">
+
+    <div class="page-header">
+      <h2>Usuários cadastrados</h2>
+    </div>
+
+
+      <div class="users-page">
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuário</th>
+          <th>Deletar</th>
+        </tr>
+      </thead>
+
+  <!-- LOADING -->
+  <tbody *ngIf="loading">
+    <tr>
+      <td colspan="2">Carregando usuários...</td>
+    </tr>
+  </tbody>
+
+  <!-- ERRO -->
+  <tbody *ngIf="!loading && error">
+    <tr>
+      <td colspan="2" class="error">{{ error }}</td>
+    </tr>
+  </tbody>
+
+  <!-- DADOS -->
+  <tbody *ngIf="!loading && !error && users.length > 0">
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>
+  <button class="btn-delete" (click)="deleteUser(user.id)">Deletar</button>
+</td>
+    </tr>
+  </tbody>
+
+  <!-- VAZIO -->
+  <tbody *ngIf="!loading && !error && users.length === 0">
+    <tr>
+      <td colspan="2">Nenhum usuário encontrado</td>
+    </tr>
+  </tbody>
+
+
+    </table>
+  </div>
+</div>
+
+</section>

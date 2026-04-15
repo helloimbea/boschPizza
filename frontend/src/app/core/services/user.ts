@@ -5,50 +5,27 @@ import { LoginResponse } from '../models/login-response';
 import { LoginRequest } from '../models/login';
 import { Observable } from 'rxjs';
 import { RegisterRequest } from '../models/register';
+import { Auth } from './auth';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Auth {
+export class User {
   private http = inject(HttpClient);
   private router = inject(Router);
-  private apiUrl = 'http://localhost:5023/auth';
-
-  login(data: LoginRequest): Observable<LoginResponse>{
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, data);
-  }
-
-  saveToken(token: string): void{
-    localStorage.setItem('token', token);
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem('token');
-  }
-
-  isAuthenticated(): boolean {
-    return !!this.getToken();
-  }
-
-  logout(): void {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
-  }
-
-  register(data: RegisterRequest): Observable<any> {
-  return this.http.post(`${this.apiUrl}/register`, data);
-}
+  private apiUrl = 'http://localhost:5023/user';
+  private auth = inject(Auth)
 
 getUsers() {
   return this.http.get<any[]>(`${this.apiUrl}/users`);
 }
 
 deleteUserWithPassword(data: { id: number; password: string }) {
-  return this.http.post(`${this.apiUrl}/users/{id}`, data);
+  return this.http.post(`${this.apiUrl}/users/delete`, data);
 }
 
 getUserId(): number | null {
-  const token = this.getToken();
+  const token = this.auth.getToken();
   if (!token) return null;
 
   const payload = JSON.parse(atob(token.split('.')[1]));

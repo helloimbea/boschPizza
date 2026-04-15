@@ -1,14 +1,54 @@
 <section class="page">
 
+  <!-- HEADER -->
   <div class="header">
     <h2>Dashboard</h2>
+    <p class="subtitle">Visão geral do sistema</p>
   </div>
 
+  <!-- BOAS-VINDAS -->
   <div class="welcome">
-    <h3>Bem-vindo 👋</h3>
-    <p>Escolha uma opção para começar a gerenciar o sistema.</p>
+    <h3>Olá, {{ authService.getNome() }}👋</h3>
+    <p>Bem-vindo ao seu painel!</p>
   </div>
 
+  <!-- STATUS -->
+  <div class="stats">
+
+    <div class="stat-card">
+      <div class="icon">🍕</div>
+      <div>
+        <h4>{{ totalPizzas }}</h4>
+        <p>Pizzas cadastradas</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="icon">👤</div>
+      <div>
+        <h4>{{ totalClientes }}</h4>
+        <p>Clientes cadastrados</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ÚLTIMA PIZZA -->
+  <div class="last-item" *ngIf="ultimaPizza">
+    <h3>🍕 Última pizza cadastrada</h3>
+    <p><strong>{{ ultimaPizza.name }}</strong></p>
+    <span>
+      {{ ultimaPizza.dataCadastro | date:'dd/MM/yyyy HH:mm' }}
+    </span>
+  </div>
+
+  <!-- GRÁFICO -->
+  <div class="chart">
+    <h3>📈 Clientes por mês</h3>
+    <canvas id="clientesChart"></canvas>
+  </div>
+
+  <!-- AÇÕES -->
   <div class="cards">
 
     <article class="card" (click)="goToPizzas()">

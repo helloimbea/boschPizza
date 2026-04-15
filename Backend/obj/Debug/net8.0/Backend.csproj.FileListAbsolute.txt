@@ -235,3 +235,4 @@ C:\Users\geb1jvl\OneDrive - Bosch Group\BoschPizza\backend\obj\Debug\net8.0\refi
 C:\Users\geb1jvl\OneDrive - Bosch Group\BoschPizza\backend\obj\Debug\net8.0\Backend.pdb
 C:\Users\geb1jvl\OneDrive - Bosch Group\BoschPizza\backend\obj\Debug\net8.0\Backend.genruntimeconfig.cache
 C:\Users\geb1jvl\OneDrive - Bosch Group\BoschPizza\backend\obj\Debug\net8.0\ref\Backend.dll
+C:\Users\geb1jvl\OneDrive - Bosch Group\BoschPizza\Backend\bin\Debug\net8.0\BCrypt.Net-Next.dll

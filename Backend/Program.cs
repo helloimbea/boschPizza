@@ -13,10 +13,14 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
  
 using Microsoft.OpenApi.Models;
+using BoschPizza.Services;
+using System.Security.Claims;
 //Cria o build da aplicacao
 //Auxilia na configuração dos servicos e recursos do projeto
 var builder = WebApplication.CreateBuilder(args);
  
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<AuthService>();
 // Add services to the container.
  
 // Adiciona suporte a controllers
@@ -103,7 +107,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey!))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey!)),
+            RoleClaimType = ClaimTypes.Role
         };
     }
 );
@@ -126,6 +131,7 @@ app.UseHttpsRedirection();
  
 // Ativa a autenticação
 app.UseAuthorization();
+
 
 //ativar o cors
 app.UseCors("Frontend");

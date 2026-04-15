@@ -8,29 +8,63 @@
     <h1>Bosch Pizza</h1>
     <p>Crie sua conta</p>
 
-    <form (ngSubmit)="register()">
+    <form [formGroup]="form" (ngSubmit)="register()">
+
       <div class="field">
         <label>Usuário</label>
         <input
           type="text"
-          [(ngModel)]="user.username"
-          name="username"
-          placeholder="Digite seu usuário"
-          required
+          formControlName="username"
+          placeholder="Crie um nome de usuário único (Ex. usuario123)"
         />
+
+        <small *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
+          <span *ngIf="form.get('username')?.errors?.['required']">
+            Usuário é obrigatório
+          </span>
+          <span *ngIf="form.get('username')?.errors?.['minlength']">
+            Mínimo de 3 caracteres
+          </span>
+        </small>
       </div>
 
+      <div class="field">
+  <label>Nome</label>
+  <input
+    type="text"
+    formControlName="nome"
+    placeholder="Digite seu nome"
+  />
+
+  <small *ngIf="form.get('nome')?.touched && form.get('nome')?.invalid">
+    Nome é obrigatório (mínimo 3 caracteres)
+  </small>
+</div>
+
+  <div class="field">
+<label class="admin-toggle">
+  <input type="checkbox" formControlName="isAdmin" />
+  <span class="slider"></span>
+  Administrador
+</label>
+</div>
       <div class="field">
         <label>Senha</label>
         <input
           type="password"
-          [(ngModel)]="user.password"
-          name="password"
-          placeholder="Digite sua senha"
-          required
+          formControlName="password"
+          placeholder="Crie uma senha (Ex. senha123)"
         />
-      </div>
 
+        <small *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+          <span *ngIf="form.get('password')?.errors?.['required']">
+            Senha é obrigatória
+          </span>
+          <span *ngIf="form.get('password')?.errors?.['minlength']">
+            Mínimo de 6 caracteres
+          </span>
+        </small>
+      </div>
       <button type="submit">Cadastrar</button>
     </form>
 

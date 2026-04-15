@@ -7,31 +7,27 @@ namespace BoschPizza.Service;
 
 public class TokenService
 {
-    public string GenerateToken(string username, string key, string issuer, string audience)
+public string GenerateToken(string username, int userId, bool userIsAdmin, string nome, string key, string issuer, string audience)
+{
+    var claims = new[]
     {
-        var claims = new[]
-        {
-            //armazena o nome do usuario dentro do token
-            new Claim(ClaimTypes.Name, username)
+        new Claim(ClaimTypes.Name, username),
+        new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
+        new Claim(ClaimTypes.Role, userIsAdmin ? "Admin" : "User"),
+        new Claim("nome", nome)    
         };
 
-        //criar a chave de segurança com base no segredo configurado no servidor
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-        //definir a credencial de assinatura usando algoritimo HMAC SHA256
-        var credencial = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+    var token = new JwtSecurityToken(
+        issuer: issuer,
+        audience: audience,
+        claims: claims,
+        expires: DateTime.Now.AddHours(2),
+        signingCredentials: credentials
+    );
 
-        //cria o token jwt com emissor audiencia claims expiração e assinatura
-        var token = new JwtSecurityToken(
-            issuer: issuer,
-            audience: audience,
-            claims: claims,
-            expires: DateTime.UtcNow.AddHours(2),
-            signingCredentials: credencial
-
-        );
-
-        //converte o objeto token em string para ser enviada ao cliente
-        return new JwtSecurityTokenHandler().WriteToken(token);
-    }
+    return new JwtSecurityTokenHandler().WriteToken(token);
+}
 }

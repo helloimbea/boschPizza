@@ -9,4 +9,6 @@ public class Cliente
 
     public string Telefone { get; set; } = string.Empty;
 
+    public DateTime DataCadastro { get; set; } = DateTime.Now;
+
 }

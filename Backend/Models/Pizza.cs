@@ -9,5 +9,6 @@ public class Pizza
     //novo campo (coluna)
     public decimal Price { get; set; }
 
+    public DateTime DataCadastro { get; set; } = DateTime.Now;
 
 }

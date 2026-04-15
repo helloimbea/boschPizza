@@ -10,6 +10,8 @@ import { PizzaList } from './features/pizzas/pages/pizza-list/pizza-list';
 import { Clientes } from './features/clientes/clientes';
 import { ClienteForm } from './features/clientes/cliente-form/cliente-form';
 import { Register } from './features/auth/pages/register/register';
+import { UsersList } from './features/users-list/users-list';
+import { adminGuard } from './core/guards/adminGuard';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -27,7 +29,12 @@ export const routes: Routes = [
             { path: 'pizzas/editar/:id', component: PizzaForm },
             { path: 'cliente', component: Clientes },
             { path: 'cliente/novo', component: ClienteForm },
-            { path: 'cliente/editar/:id', component: ClienteForm }
+            { path: 'cliente/editar/:id', component: ClienteForm },
+            {
+                path: 'users',
+                component: UsersList,
+                canActivate: [adminGuard]
+            }
         ]
     },
     

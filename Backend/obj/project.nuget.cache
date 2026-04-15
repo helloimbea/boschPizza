@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "UC492HqRDA8=",
+  "dgSpecHash": "660nsT5keN4=",
   "success": true,
   "projectFilePath": "C:\\Users\\geb1jvl\\OneDrive - Bosch Group\\BoschPizza\\Backend\\Backend.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\geb1jvl\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
     "C:\\Users\\geb1jvl\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\geb1jvl\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.8\\microsoft.aspnetcore.authentication.jwtbearer.8.0.8.nupkg.sha512",
     "C:\\Users\\geb1jvl\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

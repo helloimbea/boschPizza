@@ -1,9 +1,14 @@
 using BoschPizza.Data;
+using BoschPizza.DTOs;
 using BoschPizza.Models;
 using BoschPizza.Service;
+using BoschPizza.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace BoschPizza.Controller;
+
 
 [ApiController]
 
@@ -11,33 +16,21 @@ namespace BoschPizza.Controller;
 
 public class AuthController : ControllerBase
 {
-    private readonly IConfiguration _configuration;
-    private readonly TokenService _tokenService;
-
+    private readonly AuthService _authService;
     // metodo construtor
-private readonly AppDbContext _context;
-
-public AuthController(IConfiguration configuration, TokenService tokenService, AppDbContext context)
+public AuthController(
+    AuthService authService)
 {
-    _configuration = configuration;
-    _tokenService = tokenService;
-    _context = context;
+    _authService = authService;
 }
 
 [HttpPost("login")]
 public IActionResult Login(UserLogin login)
 {
-    var user = _context.UserLogins
-        .FirstOrDefault(u => u.Username == login.Username && u.Password == login.Password);
+    var token = _authService.Login(login);
 
-    if (user == null)
+    if (token == null)
         return Unauthorized(new { message = "usuário ou senha inválidos" });
-
-    var key = _configuration["Jwt:Key"]!;
-    var issuer = _configuration["Jwt:Issuer"]!;
-    var audience = _configuration["Jwt:Audience"]!;
-
-    var token = _tokenService.GenerateToken(user.Username, key, issuer, audience);
 
     return Ok(new { token });
 }
@@ -45,15 +38,12 @@ public IActionResult Login(UserLogin login)
 [HttpPost("register")]
 public IActionResult Register(UserLogin user)
 {
-    var userExists = _context.UserLogins.Any(u => u.Username == user.Username);
+    var result = _authService.Register(user);
 
-    if (userExists)
+    if (!result)
         return BadRequest(new { message = "Usuário já existe" });
-
-    // salva direto (sem hash)
-    _context.UserLogins.Add(user);
-    _context.SaveChanges();
 
     return Ok(new { message = "Usuário cadastrado com sucesso" });
 }
+
 }
