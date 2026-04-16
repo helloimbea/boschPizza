@@ -1,157 +1,188 @@
-/* Página */
+/* FUNDO */
 .page {
-  padding: 2rem;
-  background: #f9fafb;
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+  padding: 24px;
+  position: relative;
+
+  background: url("/assets/pizza.jpg") no-repeat center center;
+  background-size: cover;
 }
 
-/* Header */
+/* overlay */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 26, 25, 0.856);
+}
+
+/* conteúdo acima */
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER */
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
+  color: #fff;
 }
 
-.page-header h2 {
-  color: #111827;
-}
-
-/* Botão principal */
+/* BOTÃO */
 .btn-primary {
-  background: #6366f1;
+  background: linear-gradient(135deg, #ff8c00, #ff6b00);
   color: white;
   border: none;
-  padding: 0.6rem 1.2rem;
+  padding: 10px 16px;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s;
 }
 
 .btn-primary:hover {
-  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255,140,0,0.4);
 }
 
-/* Tabela */
+/* TABELA GLASS */
 .table-wrapper {
-  background: white;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  color: #fff;
 }
 
-/* Cabeçalho */
+/* CABEÇALHO */
 thead {
-  background: #f3f4f6;
+  background: rgba(255,255,255,0.1);
 }
 
 th {
   text-align: left;
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #374151;
+  padding: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
 }
 
-/* Linhas */
+/* LINHAS */
 td {
-  padding: 0.9rem 1rem;
-  border-top: 1px solid #f1f1f1;
+  padding: 14px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+tbody tr {
+  transition: 0.2s;
 }
 
 tbody tr:hover {
-  background: #f9fafb;
+  background: rgba(255,255,255,0.08);
 }
 
-/* Ações */
+/* 💰 PREÇO DESTACADO */
+td:nth-child(4) {
+  font-weight: bold;
+  color: #ddbb8b;
+}
+
+/* BADGE */
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* sem glúten */
+.badge.success {
+  background: rgba(0, 200, 120, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(0, 200, 120, 0.4);
+}
+
+/* com glúten */
+.badge.danger {
+  background: rgba(255, 80, 80, 0.2);
+  color: #ff8a80;
+  border: 1px solid rgba(255, 80, 80, 0.4);
+}
+
+/* AÇÕES */
 .actions {
   display: flex;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
-/* Botões */
+/* EDITAR */
 .btn-edit {
-  background: #10b981;
-  color: white;
-  border: none;
-  padding: 0.4rem 0.8rem;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+
+  padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .btn-edit:hover {
-  background: #059669;
+  background: rgba(255,255,255,0.25);
 }
 
+/* EXCLUIR */
 .btn-delete {
-  background: #ef4444;
-  color: white;
-  border: none;
-  padding: 0.4rem 0.8rem;
+  background: rgba(255, 80, 80, 0.2);
+  border: 1px solid rgba(255, 80, 80, 0.4);
+  color: #ff8a80;
+
+  padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .btn-delete:hover {
-  background: #dc2626;
+  background: rgba(255, 80, 80, 0.35);
 }
 
-/* Badge */
-.badge {
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.badge.success {
-  background: #d1fae5;
-  color: #065f46;
-}
-
-.badge.danger {
-  background: #fee2e2;
-  color: #7f1d1d;
-}
-
-/* Centralizar */
-.center {
-  text-align: center;
-}
-
-/* Loading */
+/* LOADING */
 .loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
-  color: #6b7280;
+  text-align: center;
+  color: #fff;
 }
 
 .spinner {
-  width: 35px;
-  height: 35px;
-  border: 4px solid #e5e7eb;
-  border-top: 4px solid #6366f1;
+  border: 4px solid rgba(255,255,255,0.2);
+  border-top: 4px solid #ff8c00;
   border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 10px;
+
   animation: spin 1s linear infinite;
-  margin-bottom: 0.5rem;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }
 
-/* Empty */
+/* EMPTY */
 .empty {
   text-align: center;
-  margin-top: 2rem;
-  color: #6b7280;
+  color: rgba(255,255,255,0.8);
+  margin-top: 40px;
 }

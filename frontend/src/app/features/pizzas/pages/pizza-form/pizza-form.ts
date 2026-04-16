@@ -22,7 +22,8 @@ export class PizzaForm {
   form = this.fb.group({
     id: [0],
     name: ['', [Validators.required, Validators.minLength(3)]],
-    isGlutenFree: [false]
+    isGlutenFree: [false],
+    price: [0, [Validators.required, Validators.min(1)]]
   });
 
   ngOnInit(): void {

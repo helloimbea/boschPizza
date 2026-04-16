@@ -31,7 +31,9 @@ public IActionResult GetUsers()
     var users = _userService.GetUsers()
         .Select(u => new {
             u.Id,
-            u.Username
+            u.Username,
+            u.Nome,
+            u.IsAdmin
         });
 
     return Ok(users);

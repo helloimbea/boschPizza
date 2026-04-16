@@ -1,5 +1,5 @@
 import { Component, inject, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DashboardService } from '../../../../core/services/dashboard.service';
 import { Chart } from 'chart.js/auto';
@@ -8,7 +8,7 @@ import { Auth } from '../../../../core/services/auth';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -37,10 +37,10 @@ private cdr = inject(ChangeDetectorRef);
       this.ultimaPizza = data.ultimaPizza;
 
       this.clientesPorMes = data.clientesPorMes;
-        this.cdr.markForCheck();
 
       setTimeout(() => {
         this.renderChart();
+        this.cdr.markForCheck();
       }, 0);
     });
   }

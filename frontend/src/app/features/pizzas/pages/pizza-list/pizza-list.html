@@ -18,8 +18,9 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nome</th>
+          <th>Sabor</th>
           <th>Sem glúten</th>
+          <th>Preço</th>
           <th class="center">Ações</th>
         </tr>
       </thead>
@@ -36,6 +37,7 @@
               {{ pizza.isGlutenFree ? 'Sem glúten' : 'Contém glúten' }}
             </span>
           </td>
+         <td>R$ {{ pizza.price | number:'1.2-2' }}</td>
           <td class="actions">
             <button class="btn-edit" (click)="editPizza(pizza.id!)">
               Editar

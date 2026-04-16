@@ -12,6 +12,8 @@
         <tr>
           <th>ID</th>
           <th>Usuário</th>
+          <th>Nome</th>
+          <th>Admin</th>
           <th>Deletar</th>
         </tr>
       </thead>
@@ -35,6 +37,9 @@
     <tr *ngFor="let user of users">
       <td>{{ user.id }}</td>
       <td>{{ user.username }}</td>
+      <td>{{ user.nome }}</td>
+      <td>{{ user.isAdmin }}</td>
+
       <td>
   <button class="btn-delete" (click)="deleteUser(user.id)">Deletar</button>
 </td>

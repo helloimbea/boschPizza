@@ -1,148 +1,139 @@
-/* Página */
+/* FUNDO */
 .page {
-  padding: 2rem;
-  background: #f9fafb;
   min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+  padding: 24px;
+  position: relative;
+
+  background: url("/assets/pizza.jpg") no-repeat center center;
+  background-size: cover;
 }
 
-/* Header */
+/* overlay */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 26, 25, 0.856);
+}
+
+/* conteúdo acima */
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER */
 .page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
+  color: #fff;
 }
 
-.page-header h2 {
-  color: #111827;
-}
-
-/* Botão principal */
-.btn-primary {
-  background: #6366f1;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.2s;
-}
-
-.btn-primary:hover {
-  background: #4f46e5;
-  transform: translateY(-1px);
-}
-
-/* Tabela */
+/* WRAPPER */
 .table-wrapper {
-  background: white;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
+/* TABELA */
 table {
   width: 100%;
   border-collapse: collapse;
+  color: #fff;
 }
 
-/* Cabeçalho */
+/* CABEÇALHO */
 thead {
-  background: #f3f4f6;
+  background: rgba(255,255,255,0.1);
 }
 
 th {
   text-align: left;
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #374151;
+  padding: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
 }
 
-/* Linhas */
+/* LINHAS */
 td {
-  padding: 0.9rem 1rem;
-  border-top: 1px solid #f1f1f1;
-  color: #111827;
+  padding: 14px;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Hover na linha */
-tbody tr:hover {
-  background: #f9fafb;
-}
-
-/* Ações */
-.actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-/* Botão editar */
-.btn-edit {
-  background: #10b981;
-  color: white;
-  border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  cursor: pointer;
+tbody tr {
   transition: 0.2s;
 }
 
-.btn-edit:hover {
-  background: #059669;
+tbody tr:hover {
+  background: rgba(255,255,255,0.08);
 }
 
-/* Botão excluir */
+/* 🔥 ADMIN BADGE */
+td:nth-child(4) {
+  font-weight: 600;
+}
+
+/* true */
+td:nth-child(4):contains("true") {
+  color: #4ade80;
+}
+
+/* false */
+td:nth-child(4):contains("false") {
+  color: #ff8a80;
+}
+
+/* fallback melhor (recomendado usar classe depois) */
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* admin */
+.badge.admin {
+  background: rgba(255, 140, 0, 0.2);
+  color: #ffb347;
+  border: 1px solid rgba(255, 140, 0, 0.4);
+}
+
+/* usuário comum */
+.badge.user {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* BOTÃO DELETE */
 .btn-delete {
-  background: #ef4444;
-  color: white;
-  border: none;
-  padding: 0.4rem 0.8rem;
+  background: rgba(255, 80, 80, 0.2);
+  border: 1px solid rgba(255, 80, 80, 0.4);
+  color: #ff8a80;
+
+  padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s;
 }
 
 .btn-delete:hover {
-  background: #dc2626;
+  background: rgba(255, 80, 80, 0.35);
 }
 
-/* Centralizar */
-.center {
+/* LOADING / ERRO / EMPTY */
+.error {
+  color: #ff8a80;
+}
+
+tbody td[colspan] {
   text-align: center;
+  color: rgba(255,255,255,0.8);
 }
-
-/* Loading */
-.loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
-  color: #6b7280;
-}
-
-/* Spinner */
-.spinner {
-  width: 35px;
-  height: 35px;
-  border: 4px solid #e5e7eb;
-  border-top: 4px solid #6366f1;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 0.5rem;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Empty state */
-.empty {
-  text-align: center;
-  margin-top: 2rem;
-  color: #6b7280;
-}
-

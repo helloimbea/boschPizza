@@ -23,6 +23,7 @@ export class UsersList implements OnInit {
       next: (data) => {
         this.users = data;
         this.loading = false;
+        console.log(this.users);
         this.cdr.markForCheck();
       },
       error: () => {

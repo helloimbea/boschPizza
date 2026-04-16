@@ -1,14 +1,47 @@
 .page {
   padding: 24px;
   font-family: 'Segoe UI', sans-serif;
-  background: #f5f6fa;
+  background: #20222b;
   min-height: 100vh;
+}
+.dashboard-wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.dashboard-content {
+  flex: 1;
+  min-width: 0;
+  padding: 24px;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.dashboard-image {
+  width: 35vw;
+  max-width: 420px;
+  min-width: 300px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.dashboard-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+
 }
 
 /* HEADER */
 .header h2 {
   margin: 0;
   font-size: 28px;
+  color: #ff7a18;
 }
 
 .subtitle {
@@ -24,19 +57,23 @@
   color: white;
   margin-bottom: 24px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  height: 100px;
 }
 
 .welcome h3 {
   margin: 0;
+  margin-bottom: 10px;
 }
 
 /* STATS */
+
 .stats {
   display: flex;
+  justify-content: left;
   gap: 16px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
-
 .stat-card {
   flex: 1;
   background: white;
@@ -47,6 +84,20 @@
   gap: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: 0.2s;
+  min-height: 150px;
+  background-color: #202031ce;
+  text-decoration: none;
+ 
+
+}
+
+.stat-card a{
+    
+     color: #f5f6fa;
+}
+
+.stat-card:hover{
+  cursor: pointer;
 }
 
 .stat-card:hover {
@@ -60,11 +111,13 @@
 .stat-card h4 {
   margin: 0;
   font-size: 22px;
+   color: #f5f6fa;
+ 
 }
 
 .stat-card p {
   margin: 0;
-  color: #666;
+   color: #f5f6fa;
 }
 
 /* ÚLTIMA PIZZA */
@@ -74,9 +127,14 @@
   border-radius: 16px;
   margin-bottom: 24px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  
 }
 
 .last-item h3 {
+  margin-bottom: 10px;
+}
+
+.last-item p{
   margin-bottom: 10px;
 }
 
@@ -85,9 +143,10 @@
   background: white;
   padding: 20px;
   border-radius: 16px;
-  margin-bottom: 24px;
+  margin: 0 auto 24px auto;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  max-width: 700px;
+
+  width: 100%;
 }
 
 .chart canvas {
@@ -128,4 +187,81 @@
     flex-direction: column;
   }
 
+}
+@media (max-width: 768px) {
+  .dashboard-wrapper {
+    flex-direction: column;
+  }
+
+  .dashboard-image {
+    width: 100%;
+    height: 300px;
+    position: relative;
+  }
+}
+
+.welcome,
+.stat-card,
+.last-item{
+  position: relative;
+  z-index: 1;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.chart {
+    position: relative;
+  z-index: 1;
+
+  background: rgba(255, 255, 255, 0.788);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #0000008c;
+}
+.subtitle {
+  color: rgba(255,255,255,0.7);
+}
+
+.last-item span {
+  color: rgba(255,255,255,0.7);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.3),
+    0 0 15px rgba(255,140,0,0.3);
+}
+
+.stat-card.highlight {
+  /* mantém glass */
+  background: rgba(255, 150, 22, 0.438);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 153, 29, 0.548);
+
+  /* glow leve */
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.2),
+    0 0 15px rgba(255, 140, 0, 0.25);
+}
+
+.stat-card.highlight:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.3),
+    0 0 20px rgba(255, 148, 16, 0.664);
+}
+
+.stat-card.highlight .icon {
+  filter: drop-shadow(0 0 6px rgba(255,140,0,0.7));
 }

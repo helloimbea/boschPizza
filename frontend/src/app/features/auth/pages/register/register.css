@@ -1,34 +1,48 @@
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
 }
-
 .login-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 16px;
-  background: linear-gradient(135deg, #f4f7fb, #dfe9f3);
+
+  background: url("/assets/pizza.jpg") no-repeat center center;
+  background-size: cover;
+  position: relative;
 }
 
+.login-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* card */
 .login-card {
+  position: relative;
+  z-index: 1;
+
   width: 100%;
   max-width: 420px;
-  background: #fff;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+  color: #fff;
 }
 
-.login-card h1 {
-  margin: 0 0 8px;
-}
-
-.login-card p {
-  margin: 0 0 20px;
-  color: #555;
-}
-
+/* campos */
 .field {
   display: flex;
   flex-direction: column;
@@ -38,15 +52,51 @@
 label {
   margin-bottom: 6px;
   font-weight: 600;
+  color: #fff;
 }
 
-input {
+/* 🔥 INPUT LARANJA */
+input[type="text"],
+input[type="password"] {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
   border-radius: 10px;
+
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+
+  outline: none;
+  transition: all 0.25s ease;
 }
 
+input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+input:focus {
+  border: 1px solid rgba(255, 140, 0, 0.9);
+
+  background: rgba(255,255,255,0.15);
+
+  box-shadow: 
+    0 0 0 2px rgba(255, 140, 0, 0.25),
+    0 0 12px rgba(255, 140, 0, 0.5);
+}
+
+/* label reage ao foco */
+.field:focus-within label {
+  color: #ff8c00;
+}
+
+/* mensagens de erro */
+small {
+  color: #ffb74d;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+/* botão */
 button {
   width: 100%;
   border: none;
@@ -54,29 +104,22 @@ button {
   padding: 12px;
   font-weight: 700;
   cursor: pointer;
-  color: #dfe9f3;
-  background-color: #45547c;
+
+  background: linear-gradient(135deg, #ff8c00, #ff6b00);
+  color: #fff;
+
+  transition: 0.2s;
 }
 
+.cadastrar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(255,140,0,0.4);
+}
+
+/* erro geral */
 .error {
-  color: #c62828;
+  color: #ff8a80;
   margin-top: 12px;
-}
-
-/* botão voltar */
-.voltar {
-  margin-bottom: 10px;
-}
-
-.botao-voltar {
-  text-decoration: none;
-  color: #45547c;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.botao-voltar:hover {
-  text-decoration: underline;
 }
 
 /* link login */
@@ -86,23 +129,36 @@ button {
 }
 
 .register-link p {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   font-size: 14px;
-  color: #45547c;
+  color: rgba(255,255,255,0.8);
 }
 
 .register-link button {
-  background: transparent;
+  background: none;
   border: none;
-  color: #824dff;
-  cursor: pointer;
+  color: #ff8c00;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.register-link button:hover {
-  text-decoration: underline;
+/* botão voltar */
+.voltar {
+  margin-bottom: 10px;
 }
 
+.botao-voltar {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.botao-voltar:hover {
+  opacity: 1;
+}
+
+/* 🔥 TOGGLE ADMIN BONITO */
 .admin-toggle {
   display: flex;
   align-items: center;
@@ -117,7 +173,7 @@ button {
 .slider {
   width: 40px;
   height: 20px;
-  background: #ccc;
+  background: rgba(255,255,255,0.3);
   border-radius: 20px;
   position: relative;
   transition: 0.3s;
@@ -128,25 +184,18 @@ button {
   position: absolute;
   width: 16px;
   height: 16px;
-  background: white;
+  background: #fff;
   border-radius: 50%;
   top: 2px;
   left: 2px;
   transition: 0.3s;
 }
 
+/* quando ativado */
 .admin-toggle input:checked + .slider {
-  background: #ff6b00;
+  background: #ff8c00;
 }
 
 .admin-toggle input:checked + .slider::before {
   transform: translateX(20px);
-}
-
-.field label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  margin-bottom: 10px;
 }

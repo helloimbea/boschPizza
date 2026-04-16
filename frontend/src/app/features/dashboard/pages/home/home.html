@@ -1,11 +1,17 @@
 <section class="page">
 
+<div class="dashboard-wrapper">
+
+  <div class="dashboard-content">
+
+
   <!-- HEADER -->
-  <div class="header">
+
+<div class="container">
+    <div class="header">
     <h2>Dashboard</h2>
     <p class="subtitle">Visão geral do sistema</p>
   </div>
-
   <!-- BOAS-VINDAS -->
   <div class="welcome">
     <h3>Olá, {{ authService.getNome() }}👋</h3>
@@ -15,21 +21,21 @@
   <!-- STATUS -->
   <div class="stats">
 
-    <div class="stat-card">
-      <div class="icon">🍕</div>
+<a class="stat-card highlight" routerLink="/pizzas">
+        <div class="icon">🍕</div>
       <div>
         <h4>{{ totalPizzas }}</h4>
         <p>Pizzas cadastradas</p>
       </div>
-    </div>
+    </a>
 
-    <div class="stat-card">
-      <div class="icon">👤</div>
-      <div>
+<a class="stat-card highlight" routerLink="/cliente">
+        <div class="icon">👤</div>
+      <div >
         <h4>{{ totalClientes }}</h4>
         <p>Clientes cadastrados</p>
-      </div>
     </div>
+    </a>
 
   </div>
 
@@ -48,21 +54,13 @@
     <canvas id="clientesChart"></canvas>
   </div>
 
-  <!-- AÇÕES -->
-  <div class="cards">
 
-    <article class="card" (click)="goToPizzas()">
-      <div class="icon">🍕</div>
-      <h3>Pizzas</h3>
-      <p>Gerencie o cadastro de pizzas</p>
-    </article>
-
-    <article class="card" (click)="goToClientes()">
-      <div class="icon">👤</div>
-      <h3>Clientes</h3>
-      <p>Gerencie seus clientes</p>
-    </article>
-
+</div>
   </div>
 
+  <div class="dashboard-image">
+    <img src="assets/pizza.jpg" />
+  </div>
+
+</div>
 </section>

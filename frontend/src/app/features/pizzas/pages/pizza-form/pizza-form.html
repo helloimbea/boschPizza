@@ -24,6 +24,25 @@
         </label>
       </div>
 
+      <div class="field">
+  <label>Preço (R$)</label>
+  <input
+    type="number"
+    formControlName="price"
+    placeholder="Ex: 29.90"
+    step="0.01"
+  />
+
+  <small *ngIf="form.get('price')?.touched && form.get('price')?.invalid">
+    <span *ngIf="form.get('price')?.errors?.['required']">
+      Preço é obrigatório
+    </span>
+    <span *ngIf="form.get('price')?.errors?.['min']">
+      O preço deve ser maior que 0
+    </span>
+  </small>
+</div>
+
       <div class="actions">
         <button class="btn-primary" type="submit">
           {{ id ? 'Atualizar' : 'Salvar' }}
